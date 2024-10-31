@@ -1,37 +1,45 @@
-<?php 
-    class Shape{
+<?php
+abstract class Shape {
+    abstract function getArea();
+    abstract function getPerimeter();
+}
 
-    }
-    class Shapes{
-        private $shapes;
+class Rectangle extends Shape {
+    private $base, $height;
 
-        public function __construct(){
-            $this -> shapes = [];
-        }
-
-        public function addShape( Shape $shape){
-            array_push( $this -> shapes, $shape );
-        }
-
-        public function totalShape(){
-            return count( $this -> shapes );
-        }
+    function __construct( $base, $height ){
+        $this->base     = $base;
+        $this->height   = $height;
     }
 
-    class Rectangle extends Shape{
+    public function setArea( $base ){
+        $this->base     = $base;
+    }
+
+    public function setHeight( $height ){
+        $this->height     = $height;
+    }
+
+    public function getArea(){
+        return $this->base*$this->height;
+    }
+
+    function getPerimeter(){
 
     }
 
-    class Triangle extends Shape{
+}
 
+
+class Triangle extends Shape{
+    public function getArea(){
+       
     }
 
-    class Student {
-        
+    function getPerimeter(){
+
     }
+}
 
-    $newShapes = new Shapes();
-    $newShapes -> addShape( new Rectangle());
-    $newShapes -> addShape( new Triangle());
-
-    echo  $newShapes -> totalShape();
+$b = new Rectangle(10, 10);
+echo $b->getArea();
